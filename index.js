@@ -70,8 +70,13 @@ const convertWithOptions = (document, format, filter, options, callback) => {
     }).catch( (err) => {
         return callback(err);
     }).finally( () => {
-        tempDir.removeCallback();
-        installDir.removeCallback();
+        try {
+            tempDir.removeCallback();
+            installDir.removeCallback();
+        } catch(e) {
+            
+        }
+        
     });
 };
 
